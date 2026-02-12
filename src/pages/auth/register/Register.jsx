@@ -1,26 +1,29 @@
-import { Box, Button, Link, TextField, Typography } from '@mui/material'
+import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material'
 import axios from 'axios';
 import { yupResolver } from "@hookform/resolvers/yup"
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { registerSchema } from '../../../validation/RegisterSchema';
 import { Link as RouterLink } from 'react-router-dom';
 
 export default function Register() {
 
+    const [serverError,setServerError]  = useState([]);    
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
-    resolver: yupResolver(registerSchema)
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+    resolver: yupResolver(registerSchema),
+    mode:'onChange',
+
   });
 
   const handleRegister = async (value) => {
-    console.log(value);
     try {
       const response = await axios.post(`https://knowledgeshop.runasp.net/api/auth/Account/Register`, value);
       console.log(response);
 
     } catch (error) {
-      console.log(error)
+      setServerError(error.response.data.errors)
+      // console.log(error.response.data.errors)
     }
 
   }
@@ -34,6 +37,12 @@ export default function Register() {
       <Typography color='#9e9494' my={2} component={'p'}  >
         Please fill in the fields below
       </Typography>
+
+      {serverError?.length >= 0 && (
+        <Box display={'flex'} flexDirection={'column'} gap={3} >
+          {serverError.map((error)=><Alert  variant='standard' severity='error'>{error}</Alert>)}
+        </Box>
+      )}
 
       <Box onSubmit={handleSubmit(handleRegister)} component={'form'} display={'flex'} flexDirection={'column'} gap={3}>
 
@@ -52,7 +61,18 @@ export default function Register() {
         <TextField {...register('phoneNumber')} fullWidth label="Phone Number" variant="outlined"
           error={errors.phoneNumber} helperText={errors.phoneNumber?.message}
         />
-        <Button type='submit' variant='contained' sx={{ background: '#212131ec' }} >Create</Button>
+
+        <Button type='submit' variant='contained' sx={{ background: '#212131ec' }} disabled={isSubmitting} >
+        {isSubmitting ? <CircularProgress
+         size={'22px'} 
+         enableTrackSlot={'30px'} 
+         color='secondary'/>
+         :'Create'
+         }
+         </Button>
+     
+        
+        
         <Typography component={'p'} color={'#625e5e'}>Already have an account?
           <Link component={RouterLink} to='/login' color='#000' px={1}>Login</Link>
         </Typography>
