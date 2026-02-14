@@ -22,7 +22,7 @@ export default function Login() {
     try {
       const response = await axios.post(`https://knowledgeshop.runasp.net/api/auth/Account/Login`, value);
       toast.success("Login successful!", {
-        position: "top-right",
+        position: "top-center",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: false,

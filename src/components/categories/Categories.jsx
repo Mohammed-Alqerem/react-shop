@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import useCategories from './../../hooks/useCategories'
 export default function Categories() {
 
