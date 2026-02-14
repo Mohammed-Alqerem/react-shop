@@ -4,7 +4,7 @@ import axiosInstance from '../api/axiosInstance';
 
 export default function useCategories() {
 
-     const getCategories = async () => {
+    const getCategories = async () => {
 
         try {
             const response = await axiosInstance.get(`/Categories`);
@@ -20,9 +20,9 @@ export default function useCategories() {
     const query = useQuery({
         queryKey: ['categories'],
         queryFn: getCategories,
-        staleTime:1000*60*5
+        staleTime: 1000 * 60 * 5
     });
 
 
-  return query;
+    return query;
 }

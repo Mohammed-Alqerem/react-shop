@@ -1,11 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material'
-import axios from 'axios';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import LoginSchema from '../../../validation/LoginSchema';
 import { Link as RouterLink } from 'react-router-dom';
 import { Bounce, toast } from 'react-toastify';
+import axiosInstance from '../../../api/axiosInstance';
 export default function Login() {
 
   const [serverError, setServerError] = useState([]);
@@ -20,9 +20,9 @@ export default function Login() {
   const handleLogin = async (value) => {
 
     try {
-      const response = await axios.post(`https://knowledgeshop.runasp.net/api/auth/Account/Login`, value);
+      const response = await axiosInstance.post(`/auth/Account/Login`, value);
       toast.success("Login successful!", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: false,
@@ -52,7 +52,6 @@ export default function Login() {
       <Typography color='#9e9494' sx={ { userSelect: 'none' } } my={ 2 } component={ 'p' } >
         If you have an account with us, please sign in.
       </Typography>
-
 
       { serverError?.length > 0 && (
 

@@ -1,11 +1,11 @@
 import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material'
-import axios from 'axios';
 import { yupResolver } from "@hookform/resolvers/yup"
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { registerSchema } from '../../../validation/RegisterSchema';
 import { Link as RouterLink } from 'react-router-dom';
 import { Bounce, toast } from 'react-toastify';
+import axiosInstance from '../../../api/axiosInstance';
 
 export default function Register() {
 
@@ -19,7 +19,7 @@ export default function Register() {
 
   const handleRegister = async (value) => {
     try {
-      const response = await axios.post(`https://knowledgeshop.runasp.net/api/auth/Account/Register`, value);
+      const response = await axiosInstance.post(`/auth/Account/Register`, value);
       toast.success("Registration successful!", {
         position: "top-right",
         autoClose: 3000,
@@ -46,7 +46,7 @@ export default function Register() {
       <Typography variant='h2' component={ 'h1' } fontWeight={ 'medium' } >
         Create Account
       </Typography>
-      <Typography color='#9e9494' sx={{userSelect:'none'}} my={ 2 } component={ 'p' }  >
+      <Typography color='#9e9494' sx={ { userSelect: 'none' } } my={ 2 } component={ 'p' }  >
         Please fill in the fields below
       </Typography>
 
@@ -86,8 +86,8 @@ export default function Register() {
 
 
 
-        <Typography component={ 'p' } sx={{userSelect:'none'}} color={ '#625e5e' }>Already have an account?
-          <Link component={ RouterLink } to='/login' sx={{userSelect:'none'}} color='#000' px={ 1 } userSelect={ 'none' }>Sign In</Link>
+        <Typography component={ 'p' } sx={ { userSelect: 'none' } } color={ '#625e5e' }>Already have an account?
+          <Link component={ RouterLink } to='/login' sx={ { userSelect: 'none' } } color='#000' px={ 1 } userSelect={ 'none' }>Sign In</Link>
         </Typography>
       </Box>
     </Box>
