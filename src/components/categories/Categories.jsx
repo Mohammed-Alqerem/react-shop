@@ -1,11 +1,15 @@
-import { Box, CircularProgress } from '@mui/material';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import useCategories from './../../hooks/useCategories'
 export default function Categories() {
 
    const { data, isLoading, isError, error} = useCategories();
 
     if (isLoading) {
-      return  <CircularProgress />
+      return  <CircularProgress sx={{position:'fixed', top:'50%',left:'50%',transform:'translate(-50%, -50%)'}}/>
+    }
+
+    if(!data.name){
+        return <Typography variant='h2' sx={{color:'gray',userSelect:'none',fontWeight:'medium',position:'fixed', top:'50%',left:'50%',transform:'translate(-50%, -50%)'}} >No data found</Typography>
     }
 
     if (isError) {

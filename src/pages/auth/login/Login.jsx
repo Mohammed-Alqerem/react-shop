@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import LoginSchema from '../../../validation/LoginSchema';
 import { Link as RouterLink } from 'react-router-dom';
+import { Bounce, toast } from 'react-toastify';
 export default function Login() {
 
   const [serverError, setServerError] = useState([]);
@@ -20,8 +21,20 @@ export default function Login() {
 
     try {
       const response = await axios.post(`https://knowledgeshop.runasp.net/api/auth/Account/Login`, value);
+      toast.success("Login successful!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
       console.log(response);
     } catch (error) {
+      console.log("mohammed" + error.response.data.message);
       setServerError(error.response.data.message);
     }
 
@@ -29,46 +42,48 @@ export default function Login() {
   }
 
 
-
   return (
-    <Box component={'section'} py={4} mt={4} textAlign={'center'}>
+    <Box component={ 'section' } py={ 4 } mt={ 4 } textAlign={ 'center' }>
 
-      <Typography variant='h2' component={'h1'} fontWeight={'medium'}>
-        Login
+      <Typography variant='h2' py={ 2 } component={ 'h1' } fontWeight={ 'medium' }>
+        Sign in
+      </Typography>
+
+      <Typography color='#9e9494' sx={ { userSelect: 'none' } } my={ 2 } component={ 'p' } >
+        If you have an account with us, please sign in.
       </Typography>
 
 
-      {serverError?.length >= 0 && (
+      { serverError?.length > 0 && (
 
-        <Box display={'flex'} flexDirection={'column'} gap={3} >
-          {serverError.map((error) => <Alert variant='standard' severity='error'>{error}</Alert>)}
-        </Box>
-      )}
+        <Alert variant='standard' severity='error'>{ serverError }</Alert>
+      )
+      }
 
-      <Box component={'form'} onSubmit={handleSubmit(handleLogin)} py={3} display={'flex'} gap={3} flexDirection={'column'} alignItems={'flex-start'}>
+      <Box component={ 'form' } onSubmit={ handleSubmit(handleLogin) } py={ 3 } display={ 'flex' } gap={ 3 } flexDirection={ 'column' } alignItems={ 'flex-start' }>
 
-        <TextField {...register('email')} label='Email' fullWidth variant='outlined'
-          error={errors.email}
-          helperText={errors.email?.message}
+        <TextField { ...register('email') } label='Email' fullWidth variant='outlined'
+          error={ errors.email }
+          helperText={ errors.email?.message }
         />
-        <TextField {...register('password')} label='Password' fullWidth variant='outlined'
-          error={errors.password}
-          helperText={errors.password?.message}
+        <TextField { ...register('password') } label='Password' fullWidth variant='outlined'
+          error={ errors.password }
+          helperText={ errors.password?.message }
         />
 
-        <Button variant='contained' type='submit' disabled={isSubmitting} sx={{ background: '#000', width: '100%' }}>
-          {isSubmitting ? <CircularProgress
-          size={'22px'}
-          enableTrackSlot={'30px'}
-          color='secondary' /> 
-          :'SIGN IN'
+        <Button variant='contained' type='submit' disabled={ isSubmitting } sx={ { background: '#000', width: '100%' } }>
+          { isSubmitting ? <CircularProgress
+            size={ '22px' }
+            enableTrackSlot={ '30px' }
+            color='secondary' />
+            : 'SIGN IN'
           }
         </Button>
 
-        <Box width={'100%'} display={'flex'} flexWrap={'wrap'} justifyContent={'space-between'}>
-          <Typography color='#595757'>Do not have an account? <Link component={RouterLink} color='#000' fontWeight={'medium'} to={'register'}>SIGN UP</Link></Typography>
+        <Box width={ '100%' } display={ 'flex' } flexWrap={ 'wrap' } justifyContent={ 'space-between' }>
+          <Typography color='#595757' sx={ { userSelect: 'none' } }>Do not have an account? <Link component={ RouterLink } color='#000' fontWeight={ 'medium' } to={ 'register' }>Sign up</Link></Typography>
 
-          <Link color='#595757' component={RouterLink}>Forget your password?</Link>
+          <Link color='#595757' sx={ { userSelect: 'none' } } component={ RouterLink }>Forget your password?</Link>
         </Box>
 
 
