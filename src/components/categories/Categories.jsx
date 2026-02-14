@@ -8,7 +8,7 @@ export default function Categories() {
       return  <CircularProgress sx={{position:'fixed', top:'50%',left:'50%',transform:'translate(-50%, -50%)'}}/>
     }
 
-    if(!data.response.name){
+    if(!data.response){
         return <Typography variant='h2' sx={{color:'gray',userSelect:'none',fontWeight:'medium',position:'fixed', top:'50%',left:'50%',transform:'translate(-50%, -50%)'}} >No data found</Typography>
     }
 
