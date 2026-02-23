@@ -1,9 +1,13 @@
 import React from 'react'
+import FooterLeft from './FooterLeft'
+import FooterRight from './FooterRight'
 
 export default function Footer() {
   return (
     <div>
-        footer
+        this is footer
+        <FooterLeft/>
+        <FooterRight/>
     </div>
   )
 }

@@ -3,11 +3,13 @@ import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } fro
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import LoginSchema from '../../../validation/LoginSchema';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Bounce, toast } from 'react-toastify';
 import axiosInstance from '../../../api/axiosInstance';
 export default function Login() {
-
+   
+   const navigate = useNavigate();
+   
   const [serverError, setServerError] = useState([]);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -32,7 +34,11 @@ export default function Login() {
         theme: "colored",
         transition: Bounce,
       });
-      console.log(response);
+      if(response.status === 200){
+        localStorage.setItem('accessToken', response.data.accessToken);
+        navigate('/');
+      }
+      console.log(response.data.accessToken);
     } catch (error) {
       console.log("mohammed" + error.response.data.message);
       setServerError(error.response.data.message);

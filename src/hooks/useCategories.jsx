@@ -6,19 +6,17 @@ export default function useCategories() {
 
     const getCategories = async () => {
 
-        try {
-            const response = await axiosInstance.get(`/Categories`);
 
-            return response.data;
+        const response = await axiosInstance.get(`/Categories`);
 
-        } catch (error) {
-            console.log(error);
-        }
+        return response.data;
+
+
     }
 
 
     const query = useQuery({
-        queryKey: ['categories'],
+        queryKey: ['categories', 'en'],
         queryFn: getCategories,
         staleTime: 1000 * 60 * 5
     });

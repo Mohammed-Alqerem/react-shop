@@ -5,17 +5,18 @@ import Footer from '../components/footer/Footer'
 import { Container } from '@mui/material'
 
 export default function MainLayout() {
+
   return (
     <>
 
-       <Navbar/>
+      <Navbar />
 
-       <Container>
-       <Outlet/>  
-       </Container>
-       
-       <Footer/>
-      
+      <Container>
+        <Outlet />
+      </Container>
+
+      <Footer />
+
     </>
   )
 }
