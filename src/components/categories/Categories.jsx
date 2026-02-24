@@ -4,6 +4,7 @@ export default function Categories() {
 
 
     const { data, isLoading, isError, error } = useCategories();
+    console.log(data);
 
     if (isLoading) {
         return <CircularProgress sx={ { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' } } />
@@ -23,7 +24,7 @@ export default function Categories() {
 
                 <Box>
                     {
-                        data.response.map((cat) => <Box>{ cat.name }</Box>)
+                        data.response.data.map((cat) => <Box>{ cat.name }</Box>)
                     }
                 </Box>
 
