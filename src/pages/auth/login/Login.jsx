@@ -6,10 +6,11 @@ import LoginSchema from '../../../validation/LoginSchema';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { Bounce, toast } from 'react-toastify';
 import axiosInstance from '../../../api/axiosInstance';
+import { useAuthStore } from '../../../store/useAuthStore';
 export default function Login() {
    
    const navigate = useNavigate();
-   
+  const setToken = useAuthStore((state) => state.setToken);
   const [serverError, setServerError] = useState([]);
 
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
@@ -35,7 +36,7 @@ export default function Login() {
         transition: Bounce,
       });
       if(response.status === 200){
-        localStorage.setItem('accessToken', response.data.accessToken);
+        setToken(response.data.accessToken)
         navigate('/');
       }
       console.log(response.data.accessToken);

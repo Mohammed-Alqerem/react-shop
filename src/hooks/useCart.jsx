@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react'
 import authAxiosInstance from '../api/authAxiosInstance';
 
 export default function useCart() {
@@ -16,7 +15,7 @@ export default function useCart() {
 
 
     const query = useQuery({
-        queryKey: ['cart'],
+        queryKey: ['cart','en'],
         queryFn: getItemCart,
         staleTime: 1000 * 60 * 5
     });
