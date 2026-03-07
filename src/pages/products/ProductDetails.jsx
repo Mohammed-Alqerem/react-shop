@@ -47,21 +47,20 @@ export default function ProductDetails() {
                     <Typography variant='h4' component={'h2'} sx={{ fontWeight: 700 }}>Reviews</Typography>
                 </Grid>
                 {
-                    product?.reviews.length > 0 ?
+                    product?.reviews?.length > 0 ?
                         (
-                            product?.reviews.map((review) =>
-
+                            product?.reviews?.map((review) =>
                                 <Grid item size={{ xs: 12 }} key={review.id}>
                                     <Box sx={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 1, }}>
                                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                                            <Avatar sx={{ bgcolor: deepOrange[500] }}>{review.userName.charAt(0)}</Avatar>
+                                            <Avatar sx={{ bgcolor: deepOrange[500] }}>{review?.userName?.charAt(0)}</Avatar>
                                             <Typography variant='h6' component='h2' sx={{ fontSize: '16px' }}>{review?.userName}</Typography>
                                         </Box>
                                         <Typography>{new Date(review.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</Typography>
 
                                     </Box>
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 2 }}>
-                                        <Rating value={review.rating} readOnly />
+                                        <Rating value={review?.rating} readOnly />
                                         <Typography variant='body1' component='p' sx={{ lineHeight: 1.6, whiteSpace: 'pre-line', fontSize: '17px' }}>{review?.comment}</Typography>
                                     </Box>
                                     <Divider sx={{ my: 2 }} />
