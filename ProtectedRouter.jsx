@@ -1,7 +1,7 @@
 import { useAuthStore } from './src/store/useAuthStore'
 import { Navigate } from 'react-router-dom';
 
-export default function ProtectedRounter({ children }) {
+export default function ProtectedRouter({ children }) {
 
     console.log('ProtectedRounter')
 

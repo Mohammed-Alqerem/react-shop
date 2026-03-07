@@ -36,15 +36,14 @@ export default function Navbar() {
             {token ?
               (
                 <>
-                  <Link underline='none' component={RouterLink} to={'cart'} color="inherit">Cart</Link>
+                  <Link underline='none' component={RouterLink} to={'/cart'} color="inherit">Cart</Link>
                   <Link underline='none' component={'button'} onClick={handleLogout} color="inherit">logout</Link>
                 </>
 
               ) :
 
               (
-                <Link underline='none' component={RouterLink} to={'login'} color="inherit">Login</Link>
-
+                <Link underline='none' component={RouterLink} to={'/login'} color="inherit">Login</Link>
               )
             }
           </Box>

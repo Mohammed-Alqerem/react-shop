@@ -18,7 +18,6 @@ export default function Cart() {
     return <Box color={ 'red' }>{ error.message }</Box>
   }
 
-  console.log(data);
 
 
   return (

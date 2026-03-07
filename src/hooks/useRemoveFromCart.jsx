@@ -14,7 +14,7 @@ export default function useRemoveFromCart() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
-            toast.success("Item Removed Successfuly !", {
+            toast.success("Item Removed Successfully!", {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -22,6 +22,14 @@ export default function useRemoveFromCart() {
                 pauseOnHover: false,
                 draggable: true,
                 progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
+        },
+        onError: () => {
+            toast.error("Failed to remove item from cart", {
+                position: "top-right",
+                autoClose: 3000,
                 theme: "colored",
                 transition: Bounce,
             });

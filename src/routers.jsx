@@ -6,7 +6,7 @@ import Register from "./pages/auth/register/Register";
 import Login from "./pages/auth/login/Login";
 import ProductDetails from "./pages/products/ProductDetails";
 import CategoriesPage from "./pages/categories/CategoriesPage";
-import ProtectedRounter from "../ProtectedRounter";
+import ProtectedRouter from "../ProtectedRouter";
 
 const router = createBrowserRouter([
 
@@ -31,9 +31,9 @@ const router = createBrowserRouter([
             {
                 path: 'cart',
                 element:
-                    <ProtectedRounter>
+                    <ProtectedRouter>
                         <Cart />
-                    </ProtectedRounter>
+                    </ProtectedRouter>
             },
             {
                 path: 'login/register',
