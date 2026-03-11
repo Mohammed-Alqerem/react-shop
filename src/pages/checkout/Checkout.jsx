@@ -78,10 +78,12 @@ export default function Checkout() {
           }
         </Table>
       </TableContainer>
-      {
+
         {
           data.items?.length > 0 && (
-          <Box sx={{display:'flex',flexDirection:'column', gap:2}}>              <InputLabel id="PaymentMethod">Payment Method</InputLabel>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <FormControl>
+              <InputLabel id="PaymentMethod">Payment Method</InputLabel>
               <Select
                 labelId="PaymentMethod"
                 id="PaymentMethod"
