@@ -8,11 +8,23 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Link from '@mui/material/Link';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
+import useCart from '../../hooks/useCart';
+import { Badge, Button } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useTranslation } from 'react-i18next';
+import i18n from '../../../i18next';
 
 export default function Navbar() {
 
   const token = useAuthStore((state) => state.token);
   const logout = useAuthStore((state) => state.logout);
+  const {t} = useTranslation();
+  const { data } = useCart();
+
+  const changeLanguage = (lang)=>{
+    i18n.changeLanguage(lang)
+  }
+  
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -26,24 +38,32 @@ export default function Navbar() {
         <Toolbar sx={{justifyContent:'space-between'} }>
          
           <Typography variant="h6" component="div">
-            SHOPE
+            {t('Shop')}
           </Typography>
+
+          <Button variant='contained' onClick={()=>changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}>
+            {i18n.language === 'en' ? 'Ar' : 'En'}
+          </Button>
           
           <Box sx={{display:{xs:'none',sm:'flex'}, gap:3}}>
 
-            <Link underline='none' component={RouterLink} to={'/'} color="inherit">Home</Link>
+            <Link underline='none' component={RouterLink} to={'/'} color="inherit">{t('Home')}</Link>
             
             {token ?
               (
                 <>
-                  <Link underline='none' component={RouterLink} to={'/cart'} color="inherit">Cart</Link>
-                  <Link underline='none' component={'button'} onClick={handleLogout} color="inherit">logout</Link>
+                  <Link underline='none' component={RouterLink} to={'/cart'} color="inherit">
+                    <Badge badgeContent={data?.items?.length || 0} color="success">
+                        <ShoppingCartIcon/>
+                    </Badge>
+                  </Link>
+                  <Link underline='none' component={'button'} onClick={handleLogout} color="inherit">{t('Logout')}</Link>
                 </>
 
               ) :
 
               (
-                <Link underline='none' component={RouterLink} to={'/login'} color="inherit">Login</Link>
+                <Link underline='none' component={RouterLink} to={'/login'} color="inherit">{t('Login')}</Link>
               )
             }
           </Box>

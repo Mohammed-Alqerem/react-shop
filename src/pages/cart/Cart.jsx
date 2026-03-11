@@ -2,11 +2,16 @@ import useCart from '../../hooks/useCart';
 import { CircularProgress, Box, Typography, TableContainer, TableHead, TableRow, TableCell, TableBody, Table, Button, TableFooter } from '@mui/material';
 import useRemoveFromCart from '../../hooks/useRemoveFromCart';
 
+import useUpdateCartItem from '../../hooks/useUpdateCartItem';
+import { useNavigate } from 'react-router-dom';
+
 export default function Cart() {
 
   const { data, isLoading, isError, error } = useCart();
+  const navigate = useNavigate();
 
-  const { mutate, isPending } = useRemoveFromCart();
+  const { mutate: removeItem, isPending: isPendingRemove } = useRemoveFromCart();
+  const { mutate: updateItem, isPending: isPendingUpdate } = useUpdateCartItem();
 
 
   if (isLoading) {
@@ -45,10 +50,30 @@ export default function Cart() {
                       <TableRow key={item.productId}>
                         <TableCell>{item.productName}</TableCell>
                         <TableCell>{item.price}</TableCell>
-                        <TableCell>{item.count}</TableCell>
+                        <TableCell>
+                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <Button
+                              size="small"
+                              variant="outlined"
+                              onClick={() => updateItem({ productId: item.productId, newCount: item.count - 1 })}
+                              disabled={item.count <= 1 || isPendingUpdate}
+                            >
+                              -
+                            </Button>
+                            <Typography>{item.count}</Typography>
+                            <Button
+                              size="small"
+                              variant="outlined"
+                              onClick={() => updateItem({ productId: item.productId, newCount: item.count + 1 })}
+                              disabled={isPendingUpdate}
+                            >
+                              +
+                            </Button>
+                          </Box>
+                        </TableCell>
                         <TableCell>{item.totalPrice}</TableCell>
                         <TableCell>
-                          <Button color='error' variant='contained' onClick={() => mutate(item.productId)} disabled={isPending}>{isPending ? 'Removing...' : 'Remove'}</Button>
+                          <Button color='error' variant='contained' onClick={() => removeItem(item.productId)} disabled={isPendingRemove}>{isPendingRemove ? 'Removing...' : 'Remove'}</Button>
                         </TableCell>
                       </TableRow>
                     ))}
@@ -59,10 +84,11 @@ export default function Cart() {
                         Total
                       </TableCell>
                       <TableCell sx={{ fontWeight: 800, fontSize: '16px' }}>
-                        {data.cartTotal}
+                        {data.cartTotal}$
                       </TableCell>
                     </TableRow>
                   </TableFooter>
+
                 </>
               )
               :
@@ -78,7 +104,21 @@ export default function Cart() {
           }
         </Table>
       </TableContainer>
+      {
+        data.items.length > 0 && (
+          <Box sx={{ display: 'flex', gap: 2, py: 3 }}>
+            <Button sx={{ flexGrow: 1 }} variant='contained' color='success' onClick={() => navigate('/checkout')}>Checkout</Button>
+            <Button sx={{ flexGrow: 1 }} variant='contained' color='primary' onClick={() => navigate('/')}>Continue Shopping</Button>
+
+          </Box>
+        )
+      }
 
     </Box>
   )
 }
+
+
+
+
+

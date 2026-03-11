@@ -3,10 +3,12 @@ import useProducts from '../../hooks/useProducts'
 import { Box, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 import Loader from '../../ui/Loader/Loader';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function Products() {
 
     const { data, isError, isLoading, error } = useProducts();
+    const {t} = useTranslation();
 
     if (isLoading) {
         return <Loader />
@@ -19,7 +21,7 @@ export default function Products() {
 
     return (
         <Box component={ 'section' } py={ 3 } className='products'>
-            <Typography variant='h4' component='h2' py={ 3 }>Products</Typography>
+            <Typography variant='h4' component='h2' py={ 3 }>{t('Products')}</Typography>
             <Grid container spacing={ 3 }>
                 {
                     data?.response?.data?.map((product) =>
