@@ -9,13 +9,13 @@ export default function MainLayout() {
   return (
     <>
 
-      <Navbar />
 
-      <Container>
+        <Navbar />
         <Outlet />
+      <Container>
+        <Footer />
       </Container>
 
-      <Footer />
 
     </>
   )
