@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { ThemeProvider } from '@emotion/react';
+import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { ToastContainer } from 'react-toastify';
 import getTheme from '../theme';

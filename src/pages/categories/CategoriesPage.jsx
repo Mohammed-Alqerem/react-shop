@@ -1,8 +1,7 @@
 import React from 'react'
 import useCategories from '../../hooks/useCategories';
 import Loader from '../../ui/Loader/Loader';
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Box, Grid, Typography } from '@mui/material';
 import Category from '../../ui/Category/Category';
 
 export default function CategoriesPage() {

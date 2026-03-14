@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from '../api/axiosInstance';
 import i18n from '../../i18next';
 
-export default function useCategories(limit = 4) {
+export default function useCategories(limit = 1000) {
 
     const getCategories = async () => {
 

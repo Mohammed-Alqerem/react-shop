@@ -1,10 +1,13 @@
-import { Box, Button, Card, CardMedia, Container, Divider, Grid, Typography, keyframes } from '@mui/material'
+import { Box, Button, Card, CardMedia, Container, Divider, Grid, Link, Typography, keyframes } from '@mui/material'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import GradeIcon from '@mui/icons-material/Grade';
 import heroImage from './../../assets/shopping-hero.jpg';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { Link as ReactRouterLink } from 'react-router-dom';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import Products from '../../components/product/Products';
 
 const floatAnimation = keyframes`
   0% {
@@ -33,17 +36,20 @@ const floatingArrow = keyframes`
 export default function Home() {
 
   const { t } = useTranslation();
+
+ 
   return (
     <Box component={'section'}>
-      <Box sx={{ background: '#100c12', color: 'white', py: 6 }}>
+      <Box>
+        <Box sx={{ backgroundColor: '#100c12', color: '#fff', py: 6 }}>
         <Box>
           <Container>
             <Grid container spacing={3}>
 
 
-              <Grid size={{ xs: 12, sm: 12, md: 6 }} item>
+                <Grid item size={{ xs: 12, sm: 12, md: 6 }} >
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                  <Typography variant='h3' component={'h3'} sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }}>Step Into <Typography sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }} variant='h3' component={'h3'} color={'primary'}>Your Best</Typography></Typography>
+                    <Typography variant='h3' component={'h3'} sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }}>{t('Step Into ')}<Typography sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }} variant='h3' component={'h3'} color={'primary'}>Your Best</Typography></Typography>
                   <Typography color='#aea6a6ff'>{t('Premium footwear for every step of your journey. From athletic performance to everyday comfort.')}</Typography>
                   <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                     <Button variant='contained' color='primary' sx={{ py: 1.5, px: 5, borderRadius: 6 }}>{t('Shop Now')} <ArrowRightAltIcon /></Button>
@@ -55,15 +61,15 @@ export default function Home() {
 
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <Typography sx={{ fontWeight: '900', fontSize: '30px' }}>50K+</Typography>
-                    <Typography color='white'>Happy Customers</Typography>
+                      <Typography sx={{ color: '#fff' }}>{t('Happy Customers')}</Typography>
                   </Box>
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <Typography sx={{ fontWeight: '900', fontSize: '30px' }}>4.9<GradeIcon color='warning' /></Typography>
-                    <Typography color='white'>Average Rating</Typography>
+                      <Typography sx={{ color: '#fff' }}>{t('Average Rating')}</Typography>
                   </Box >
                   <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     <Typography sx={{ fontWeight: '900', fontSize: '30px' }}>300+</Typography>
-                    <Typography color='white'>Styles Available</Typography>
+                      <Typography sx={{ color: '#fff' }}>{t('Styles Available')}</Typography>
                   </Box>
 
                 </Box>
@@ -82,7 +88,7 @@ export default function Home() {
                 </Card>
               </Grid>
               <Grid item size={{ xs: 12 }} sx={{ textAlign: 'center', mt: 3 }}>
-                <Typography variant='caption' sx={{ fontWeight: 'bold' }}>Explore</Typography>
+                  <Typography variant='caption' sx={{ fontWeight: 'bold' }}>{t('Explore')}</Typography>
               </Grid>
               <Grid item size={{ xs: 12 }} sx={{ textAlign: 'center' }}>
 
@@ -91,15 +97,42 @@ export default function Home() {
                     borderRadius: 4,
                     overflow: 'hidden',
                     boxShadow: 3,
-                    animation: `${floatingArrow} 4s ease-in-out infinite`,
+                      animation: `${floatingArrow} 5s ease-in-out infinite`,
                   }}
                 />
               </Grid>
 
             </Grid>
 
+
+
           </Container>
         </Box>
+      </Box>
+
+        <Box component={'div'} py={10}>
+          <Container>
+            <Box>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  <Typography variant='h3' component={'h2'} sx={{ fontWeight: '800' }}>Shop By Product Category</Typography>
+                  <Typography variant='body1' component={'p'} color='textSecondary'>Find the perfect pair for every occasion</Typography>
+                </Box>
+                <Link to={'/categories'} component={ReactRouterLink} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>{t('Shop All')} <ArrowForwardIosIcon fontSize='small' /></Link>
+
+              </Box>
+             <Box py={5}>
+              <Products limit={6}  />
+             </Box>
+
+            </Box>
+          </Container>
+
+
+        </Box>
+
+
+
       </Box>
         
 

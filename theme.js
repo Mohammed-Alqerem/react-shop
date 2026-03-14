@@ -6,7 +6,6 @@ const getTheme = (mode) => {
       mode: mode,
       primary: {
         main: "#d95f13ff",
-        contrastText:'white',
       },
       black: {
         main: "#000000",

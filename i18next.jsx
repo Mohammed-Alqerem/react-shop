@@ -45,8 +45,25 @@ i18n
           "Help": "Help",
           "Privacy": "Privacy",
           "About": "About",
+          "Terms": "Terms",
           "Premium footwear for every step of your journey. From athletic performance to everyday comfort.": "Premium footwear for every step of your journey. From athletic performance to everyday comfort.",
-          "© 2026 Stride. All rights reserved.": "© 2026 Stride. All rights reserved."
+          "© 2026 Stride. All rights reserved.": "© 2026 Stride. All rights reserved.",
+          "Happy Customers": "Happy Customers",
+          "Average Rating": "Average Rating",
+          "Styles Available": "Styles Available",
+          "Step Into": "Step Into",
+          "Your Best": "Your Best",
+          "Browse Categories": "Browse Categories",
+          "Shop Now": "Shop Now",
+          "Explore":"Explore",
+          "Adding...":"Adding...",
+          "Add to Cart":"Add to Cart",
+          "Customer Reviews":"Customer Reviews",
+          "Free Shipping":"Free Shipping",
+          "On orders over $75":"On orders over $75",
+          "60-Day Returns":"60-Day Returns",
+          "Try it, love it":"Try it, love it",
+          "reviews":"reviews"
 
         }
       },
@@ -85,9 +102,26 @@ i18n
           "Help": "المساعدة",
           "Privacy": "الخصوصية",
           "About": "حول",
+          "Terms": "الشروط",
           "Premium footwear for every step of your journey. From athletic performance to everyday comfort.": "أحذية فاخرة لكل خطوة في رحلتك. من الأداء الرياضي إلى الراحة اليومية.",
-          "© 2026 Stride. All rights reserved.": "© 2026 Stride. جميع الحقوق محفوظة."
-
+          "© 2026 Stride. All rights reserved.": "© 2026 Stride. جميع الحقوق محفوظة.",
+          "Happy Customers": "العملاء سعداء",
+          "Average Rating": "التقييم المتوسط",
+          "Styles Available": "الأنماط المتاحة",
+          "Step Into": "Step Into",
+          "Your Best": "Your Best",
+          "Browse Categories": "تصفح التصنيفات",
+          "Shop Now": "تسوق الآن",
+          "Explore":"استكشف",
+          "Adding...":"جاري الاضافة...",
+          "Add to Cart":"اضافة اللى السلة",
+          "Customer Reviews":"تقييمات العملاء",
+          "Free Shipping":"شحن مجاني",
+          "On orders over $75":"فوق 75 دولار",
+          "60-Day Returns":"الارجاع خلال 60 يوم",
+          "Try it, love it":"جربها، حتعجبك",
+          "reviews":"تقييمات"
+          
         }
       }
     },

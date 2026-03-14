@@ -57,10 +57,9 @@ export default function Navbar() {
           <Box sx={{display:{xs:'none',sm:'flex'}, gap:3}}>
 
             <Link underline='none' component={RouterLink} to={'/'} color="inherit">{t('Home')}</Link>
-            <Link underline='none' component={RouterLink} to={'/profile'} color="inherit">
-             <PersonIcon/>
-            </Link>
-            
+            <Link underline='none' component={RouterLink} to={'/profile'} color="inherit" aria-label={t('Profile')}>
+             <PersonIcon />
+            </Link>            
             {token ?
               (
                 <>

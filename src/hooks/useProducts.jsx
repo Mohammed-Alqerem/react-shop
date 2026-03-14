@@ -1,13 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react'
 import axiosInstance from '../api/axiosInstance';
 import i18n from '../../i18next';
 
-export default function useProducts() {
+export default function useProducts(limits = 1000) {
 
      const getProducts = async ()=>{
 
-          const response = await axiosInstance.get(`/Products`);
+          const response = await axiosInstance.get(`/Products?limit=${limits}`);
           return response.data;
 
      }

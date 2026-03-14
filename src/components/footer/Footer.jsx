@@ -53,8 +53,7 @@ export default function Footer() {
               <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Running')}</Link>
               <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Sneakers')}</Link>
               <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Basketball')}</Link>
-              <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Casual')}</Link>
-              <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Boots')}</Link>
+              <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Returns')}</Link>              <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Boots')}</Link>
               <Link underline={'none'} color='textSecondary' sx={{ cursor: 'pointer', ":hover": { color: 'primary.main', transition: 'all' } }}>{t('Sandals')}</Link>
             </Box>
           </Box>
