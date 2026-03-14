@@ -49,7 +49,7 @@ export default function Home() {
 
                 <Grid item size={{ xs: 12, sm: 12, md: 6 }} >
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-                    <Typography variant='h3' component={'h3'} sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }}>{t('Step Into ')}<Typography sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }} variant='h3' component={'h3'} color={'primary'}>Your Best</Typography></Typography>
+                    <Typography variant='h3' component={'h3'} sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }}>{t('Step Into')}<Typography sx={{ fontWeight: '900', fontSize: { xs: '30px', sm: '40px', md: '60px', textTransform: 'capitalize' } }} variant='h3' component={'h3'} color={'primary'}>{t('Your Best')}</Typography></Typography>
                   <Typography color='#aea6a6ff'>{t('Premium footwear for every step of your journey. From athletic performance to everyday comfort.')}</Typography>
                   <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
                     <Button variant='contained' color='primary' sx={{ py: 1.5, px: 5, borderRadius: 6 }}>{t('Shop Now')} <ArrowRightAltIcon /></Button>

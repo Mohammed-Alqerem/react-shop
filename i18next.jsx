@@ -63,7 +63,8 @@ i18n
           "On orders over $75":"On orders over $75",
           "60-Day Returns":"60-Day Returns",
           "Try it, love it":"Try it, love it",
-          "reviews":"reviews"
+          "reviews":"reviews",
+
 
         }
       },
@@ -108,8 +109,6 @@ i18n
           "Happy Customers": "العملاء سعداء",
           "Average Rating": "التقييم المتوسط",
           "Styles Available": "الأنماط المتاحة",
-          "Step Into": "Step Into",
-          "Your Best": "Your Best",
           "Browse Categories": "تصفح التصنيفات",
           "Shop Now": "تسوق الآن",
           "Explore":"استكشف",
@@ -120,7 +119,9 @@ i18n
           "On orders over $75":"فوق 75 دولار",
           "60-Day Returns":"الارجاع خلال 60 يوم",
           "Try it, love it":"جربها، حتعجبك",
-          "reviews":"تقييمات"
+          "reviews":"تقييمات",
+          "Step Into":"خطوة الى",
+          "Your Best":"الافضل"
           
         }
       }
