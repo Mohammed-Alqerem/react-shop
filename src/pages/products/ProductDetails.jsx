@@ -2,22 +2,22 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import useProductDetails from '../../hooks/useProductDetails';
 import Loader from '../../ui/Loader/Loader';
-import { Alert, Avatar, Box, Button, CardMedia, Chip, Container, Divider, Grid, Rating, Typography, Breadcrumbs, Link as MuiLink, IconButton } from '@mui/material';
-import { deepOrange } from '@mui/material/colors';
+import { Alert, Box, Button, CardMedia, Chip, Container, Divider, Grid, Rating, Typography, Breadcrumbs, Link as MuiLink, IconButton } from '@mui/material';
 import useAddToCart from '../../hooks/useAddToCart';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import LocalShippingOutlinedIcon from '@mui/icons-material/LocalShippingOutlined';
 import AssignmentReturnOutlinedIcon from '@mui/icons-material/AssignmentReturnOutlined';
-import CheckIcon from '@mui/icons-material/Check';
-import VerifiedIcon from '@mui/icons-material/Verified';
+
 import { useTranslation } from 'react-i18next';
+import Reviews from '../../components/reviews/Reviews';
 
 export default function ProductDetails() {
 
     const { id } = useParams();
 
     const { data, isError, isLoading, error } = useProductDetails(id);
+    console.log(data);
     const { t } = useTranslation();
 
     const { mutate, isPending } = useAddToCart();
@@ -30,7 +30,7 @@ export default function ProductDetails() {
 
     if (isError) {
         return <Alert severity="error">{error.message}</Alert>
-    } 
+    }
 
     return (
         <Box component={'section'} className='productDetails'>
@@ -52,8 +52,6 @@ export default function ProductDetails() {
                         <Box sx={{ borderRadius: 6, overflow: 'hidden' }}>
                             <CardMedia component={'img'} image={product?.image} sx={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                         </Box>
-
-
 
                     </Grid>
 
@@ -148,25 +146,7 @@ export default function ProductDetails() {
                         {product?.reviews?.length > 0 ? (
                             product?.reviews?.map((review) => (
                                 <Grid item size={{ xs: 12, md: 4 }} key={review.id}>
-                                    <Box sx={{ border: '1px solid', borderColor: 'grey.200', borderRadius: 3, p: 3, height: '100%', bgcolor: 'background.paper' }}>
-                                        <Box sx={{ display: 'flex', gap: 2, mb: 2, alignItems: 'center' }}>
-                                            <Avatar sx={{ width: 44, height: 44, bgcolor: deepOrange[500], fontWeight: 700 }}>
-                                                {review?.userName?.charAt(0)}
-                                            </Avatar>
-                                            <Box>
-                                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
-                                                    <Typography sx={{ fontWeight: 800, fontSize: '14px' }}>{review?.userName}</Typography>
-                                                </Box>
-                                                <Typography sx={{ fontSize: '12px', color: 'text.secondary', fontWeight: 500 }}>
-                                                    {new Date(review.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                                                </Typography>
-                                            </Box>
-                                        </Box>
-                                        <Rating value={review?.rating} readOnly size="small" sx={{ mb: 2, color: '#faaf00' }} />
-                                        <Typography variant='body2' color='text.secondary' sx={{ lineHeight: 1.6, fontWeight: 500 }}>
-                                            {review?.comment}
-                                        </Typography>
-                                    </Box>
+                                    <Reviews review={review} />
                                 </Grid>
                             ))
                         ) : (

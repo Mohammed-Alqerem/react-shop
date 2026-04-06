@@ -64,6 +64,25 @@ i18n
           "60-Day Returns":"60-Day Returns",
           "Try it, love it":"Try it, love it",
           "reviews":"reviews",
+          "What Our Customers Say":"What Our Customers Say",
+          "Join thousands of happy customers who have made Stride their go-to footwear brand":"Join thousands of happy customers who have made Stride their go-to footwear brand",
+          "5-Star Reviews":"5-Star Reviews",
+          "Would Recommend":"Would Recommend",
+          "Shop By Product Category":"Shop By Product Category",
+          "Find the perfect pair for every occasion":"Find the perfect pair for every occasion",
+          "Shop All":"Shop All",
+          "Stride has completely transformed my running experience. The Velocity Runner Pro helped me PR at my last marathon by 8 minutes.":"Stride has completely transformed my running experience. The Velocity Runner Pro helped me PR at my last marathon by 8 minutes.",
+          "Join the Stride Club":"Join the Stride Club",
+          "Get 15% off your first order, plus early access to new drops.":"Get 15% off your first order, plus early access to new drops.",
+          "Enter your email":"Enter your email",
+          "Subscribe":"Subscribe",
+          "Email":"Email",
+          "Ready to Step Up Your Game?":"Ready to Step Up Your Game?",
+          "Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.":"Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.",
+          "No spam, ever. Unsubscribe anytime.":"No spam, ever. Unsubscribe anytime.",
+          "Download Our App":"Download Our App"
+          
+          
 
 
         }
@@ -121,8 +140,26 @@ i18n
           "Try it, love it":"جربها، حتعجبك",
           "reviews":"تقييمات",
           "Step Into":"خطوة الى",
-          "Your Best":"الافضل"
+          "Your Best":"الافضل",
+          "What Our Customers Say":"ماذا يقول عملاؤنا",
+          "Join thousands of happy customers who have made Stride their go-to footwear brand":"انضم إلى آلاف العملاء السعداء الذين جعلوا من Stride علامتهم التجارية المفضلة للأحذية",
+          "5-Star Reviews":"تقييمات 5 نجوم",
+          "Would Recommend":"نوصي",
+          "Shop By Product Category":"تسوق حسب الفئة",
+          "Find the perfect pair for every occasion":"ابحث عن الحذاء المثالي لكل مناسبة",
+          "Shop All":"تسوق الكل",
+          "Stride has completely transformed my running experience. The Velocity Runner Pro helped me PR at my last marathon by 8 minutes.":"قد غيرت ”سترايد“ تجربة الجري لديّ تمامًا. ساعدني حذاء ”فيلوسيتي رانر برو“ على تحطيم رقمي القياسي الشخصي في الماراثون الأخير بفارق 8 دقائق.",
+          "Join the Stride Club":"انضم إلى نادي سترايد",
+          "Get 15% off your first order, plus early access to new drops.":"احصل على خصم 15% على طلبك الأول، بالإضافة إلى إمكانية الوصول المبكر إلى المنتجات الجديدة.",
+          "Enter your email":"أدخل بريدك الإلكتروني",
+          "Subscribe":"اشترك",
+          "Email":"البريد الالكتروني",
+          "Ready to Step Up Your Game?":"هل أنت مستعد للارتقاء بمستواك؟",
+          "Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.":"انضم إلى مجتمع Stride واحصل على خصم 15% على طلبك الأول. بالإضافة إلى إمكانية الوصول المبكر إلى الإصدارات الجديدة والعروض الحصرية للأعضاء.",
+          "No spam, ever. Unsubscribe anytime.":"لا رسائل مزعجة، أبدًا. يمكنك إلغاء الاشتراك في أي وقت.",
+          "Download Our App":"حمل تطبيقنا",
           
+         
         }
       }
     },

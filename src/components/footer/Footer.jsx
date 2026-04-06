@@ -1,4 +1,4 @@
-import { Box, Divider, Grid, IconButton, Link, Typography } from '@mui/material'
+import { Box, Button, Container, Divider, Grid, IconButton, InputBase, Link, Typography } from '@mui/material'
 import React from 'react'
 import Logo from '../logo'
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -13,8 +13,47 @@ export default function Footer() {
 
   return (
     <Box component={'footer'} py={5}>
+      <Box py={3}>
+        <Container>
+          <Box sx={{display:'flex',justifyContent:{xs:'center',lg:'space-between'},alignItems:'center',flexWrap:'wrap',gap:3}}>
+            <Box>
+              <Typography variant='h5' component={'h5'} sx={{fontWeight:'900'}}>{t('Join the Stride Club')}</Typography>
+              <Typography variant='body1' component={'p'} color='textSecondary'>{t('Get 15% off your first order, plus early access to new drops.')}</Typography>
+            </Box>
 
-      <Grid container spacing={5}>
+            <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+
+              <InputBase
+                placeholder={t('Enter your email')}
+                sx={{
+                  border: '1px solid #868484ff',
+                  backgroundColor: '#fff',
+                  padding: '10px 20px',
+                  borderRadius: '5px',
+                  width: '300px',
+                  height: '50px',
+                  fontSize: '16px',
+                  fontWeight: '500',
+                  color: '#000',
+                  outline: 'none',
+                  transition: 'all 0.3s ease',
+                 
+                }}
+              />
+
+              <Button type='submit' variant='contained' sx={{paddingX:5}}>{t('Subscribe')}</Button>
+
+            </Box>
+
+          </Box>
+        </Container>
+
+         <Divider sx={{py:4}}/>
+
+      </Box>
+
+     
+      <Grid container spacing={5} py={5}>
         <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexWrap: 'wrap', gap: 2 }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', flexWrap: 'wrap', gap: 2 }}>
@@ -115,6 +154,8 @@ export default function Footer() {
         </Grid>
 
       </Grid>
+
+
     </Box>
   )
 }
