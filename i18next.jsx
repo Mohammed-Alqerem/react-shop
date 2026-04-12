@@ -80,7 +80,27 @@ i18n
           "Ready to Step Up Your Game?":"Ready to Step Up Your Game?",
           "Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.":"Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.",
           "No spam, ever. Unsubscribe anytime.":"No spam, ever. Unsubscribe anytime.",
-          "Download Our App":"Download Our App"
+          "Download Our App":"Download Our App",
+          "Filter":"Filter",
+          "Order":"Order",
+          "Apply Filter":"Apply Filter",
+          "All Product":"All Product",
+          "Sort By":"Sort By",
+          "ascending":"ascending",
+          "descending":"descending",
+          "price":"price",
+          "name":"name",
+          "rate":"rate",
+          "Category":"Category",
+          "Price":"Price",
+          "Rating":"Rating",
+          "Stock":"Stock",
+          "View Product":"View Product",
+          "No products found":"No products found",
+          "No products found in this category":"No products found in this category",
+          "Browse our complete collection of premium footwear":"Browse our complete collection of premium footwear",
+          
+          
           
           
 
@@ -158,6 +178,25 @@ i18n
           "Join the Stride community and get 15% off your first order. Plus, early access to new releases and exclusive member-only deals.":"انضم إلى مجتمع Stride واحصل على خصم 15% على طلبك الأول. بالإضافة إلى إمكانية الوصول المبكر إلى الإصدارات الجديدة والعروض الحصرية للأعضاء.",
           "No spam, ever. Unsubscribe anytime.":"لا رسائل مزعجة، أبدًا. يمكنك إلغاء الاشتراك في أي وقت.",
           "Download Our App":"حمل تطبيقنا",
+          "Filter":"فلتر",
+          "Order":"ترتيب",
+          "Apply Filter":"تطبيق الفلتر",
+          "All Product":"كل المنتجات",
+          "Sort By":"ترتيب حسب",
+          "ascending":"تصاعدي",
+          "descending":"تنازلي",
+          "price":"السعر",
+          "name":"الاسم",
+          "rate":"التقييم",
+          "Category":"الفئة",
+          "Price":"السعر",
+          "Rating":"التقييم",
+          "Stock":"المخزون",
+          "View Product":"عرض المنتج",
+          "No products found":"لا يوجد منتجات",
+          "No products found in this category":"لا يوجد منتجات في هذه الفئة",
+          "Browse our complete collection of premium footwear":"تصفح مجموعتنا الكاملة من الأحذية الفاخرة",
+          
           
          
         }

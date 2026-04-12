@@ -44,8 +44,9 @@ export default function Home() {
 
   return (
     <Box component={ 'main' }>
-      <Box component={ 'section' }>
-        <Box sx={ { backgroundColor: '#100c12', color: '#fff', py: 6 } }>
+   
+
+        <Box component={'section'} sx={ { backgroundColor: '#100c12', color: '#fff', py: 6 } }>
           <Box>
             <Container>
               <Grid container spacing={ 3 }>
@@ -357,7 +358,7 @@ export default function Home() {
 
 
 
-      </Box>
+     
 
 
 

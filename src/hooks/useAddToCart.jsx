@@ -25,6 +25,18 @@ export default function useAddToCart() {
                 theme: "colored",
                 transition: Bounce,
             });
+        }, onError: (error) => {
+            toast.error(error.response.data.message, {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
         }
     })
 

@@ -29,6 +29,10 @@ const router = createBrowserRouter([
                 element: <ProductDetails />
             },
             {
+                path: 'categories/product/:id',
+                element: <ProductDetails />
+            },
+            {
                 path: 'checkout',
                 element:
                     <ProtectedRouter>
