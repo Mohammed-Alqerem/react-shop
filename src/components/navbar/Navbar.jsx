@@ -21,16 +21,16 @@ export default function Navbar() {
 
   const token = useAuthStore((state) => state.token);
   const logout = useAuthStore((state) => state.logout);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const { data } = useCart();
 
-  const changeLanguage = (lang)=>{
+  const changeLanguage = (lang) => {
     i18n.changeLanguage(lang)
   }
 
-  const mode = useThemeStore((state)=>state.mode);
-  const toggleTheme = useThemeStore((state)=>state.toggleTheme);
-  
+  const mode = useThemeStore((state) => state.mode);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -39,42 +39,42 @@ export default function Navbar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={ { flexGrow: 1 } }>
       <AppBar position="static">
-        <Toolbar sx={{justifyContent:'space-between'} }>
-         
+        <Toolbar sx={ { justifyContent: 'space-between' } }>
+
           <Box>
-            <Logo/>
+            <Logo />
           </Box>
 
-          <Button variant='contained' onClick={()=>changeLanguage(i18n.language === 'en' ? 'ar' : 'en')}>
-            {i18n.language === 'en' ? 'Ar' : 'En'}
+          <Button variant='contained' onClick={ () => changeLanguage(i18n.language === 'en' ? 'ar' : 'en') }>
+            { i18n.language === 'en' ? 'Ar' : 'En' }
           </Button>
-           <Button variant='contained' onClick={toggleTheme}>
-            {mode === 'light' ? 'Dark' : 'Light'}
+          <Button variant='contained' onClick={ toggleTheme }>
+            { mode === 'light' ? 'Dark' : 'Light' }
           </Button>
-          
-          <Box sx={{display:{xs:'none',sm:'flex'}, gap:3}}>
 
-            <Link underline='none' component={RouterLink} to={'/'} color="inherit">{t('Home')}</Link>
-            <Link underline='none' component={RouterLink} to={'/profile'} color="inherit" aria-label={t('Profile')}>
-             <PersonIcon />
-            </Link>            
-            {token ?
+          <Box sx={ { display: { xs: 'none', sm: 'flex' }, gap: 3 } }>
+
+            <Link underline='none' component={ RouterLink } to={ '/' } color="inherit">{ t('Home') }</Link>
+            <Link underline='none' component={ RouterLink } to={ '/profile' } color="inherit" aria-label={ t('Profile') }>
+              <PersonIcon />
+            </Link>
+            { token ?
               (
                 <>
-                  <Link underline='none' component={RouterLink} to={'/cart'} color="inherit">
-                    <Badge badgeContent={data?.items?.length || 0} color="success">
-                        <ShoppingCartIcon/>
+                  <Link underline='none' component={ RouterLink } to={ '/cart' } color="inherit">
+                    <Badge badgeContent={ data?.items?.length || 0 } color="success">
+                      <ShoppingCartIcon />
                     </Badge>
                   </Link>
-                  <Link underline='none' component={'button'} onClick={handleLogout} color="inherit">{t('Logout')}</Link>
+                  <Link underline='none' component={ 'button' } onClick={ handleLogout } color="inherit">{ t('Logout') }</Link>
                 </>
 
               ) :
 
               (
-                <Link underline='none' component={RouterLink} to={'/login'} color="inherit">{t('Login')}</Link>
+                <Link underline='none' component={ RouterLink } to={ '/login' } color="inherit">{ t('Login') }</Link>
               )
             }
           </Box>
@@ -84,7 +84,7 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2, display:{xs:'flex',sm:'none'} } }
+            sx={ { mr: 2, display: { xs: 'flex', sm: 'none' } } }
           >
             <MenuIcon />
           </IconButton>

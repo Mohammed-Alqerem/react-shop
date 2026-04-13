@@ -1,20 +1,17 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import authAxiosInstance from '../api/authAxiosInstance'
-import { Bounce, toast } from 'react-toastify';
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { Bounce, toast } from "react-toastify";
+import authAxiosInstance from "../api/authAxiosInstance";
 
-export default function useAddToCart() {
-
+export default function useClearCart() {
     const queryClient = useQueryClient();
 
-    const mutate = useMutation({
-        mutationFn: async (values) => {
-            return authAxiosInstance.post(`/Carts`, {
-                ProductId: values.ProductId,
-                Count: values.Count
-            })
-        }, onSuccess: () => {
+    return useMutation({
+        mutationFn: async () => {
+            return await authAxiosInstance.delete('Carts/clear');
+        },
+        onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
-            toast.success("Item Added To Cart Successfuly", {
+            toast.success("Cart Cleared Successfuly !", {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -40,5 +37,4 @@ export default function useAddToCart() {
         }
     })
 
-    return mutate
 }

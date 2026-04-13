@@ -9,23 +9,24 @@ const getTheme = (mode) => {
         contrastText: "#ffffff",
       },
       secondary: {
-        main: mode === 'light' ? '#64748b' : '#94a3b8',
+        main: mode === "light" ? "#64748b" : "#94a3b8",
       },
       background: {
-        default: mode === 'light' ? '#f8fafc' : '#020617',
-        paper: mode === 'light' ? '#ffffff' : '#0f172a',
+        default: mode === "light" ? "#f8fafc" : "#020617",
+        paper: mode === "light" ? "#ffffff" : "#0f172a",
       },
       text: {
-        primary: mode === 'light' ? '#0f172a' : '#f8fafc',
-        secondary: mode === 'light' ? '#475569' : '#94a3b8',
+        primary: mode === "light" ? "#0f172a" : "#f8fafc",
+        secondary: mode === "light" ? "#475569" : "#94a3b8",
       },
-      divider: mode === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)',
+      divider: mode === "light" ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)",
     },
     shape: {
       borderRadius: 12,
     },
     typography: {
-      fontFamily: '"Outfit", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+      fontFamily:
+        '"Outfit", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
       h1: { fontWeight: 800 },
       h2: { fontWeight: 800 },
       h3: { fontWeight: 800 },
@@ -37,7 +38,7 @@ const getTheme = (mode) => {
       MuiButton: {
         styleOverrides: {
           root: {
-            textTransform: 'none',
+            textTransform: "none",
             fontWeight: 600,
             borderRadius: 8,
           },
@@ -46,7 +47,7 @@ const getTheme = (mode) => {
       MuiPaper: {
         styleOverrides: {
           root: {
-            backgroundImage: 'none',
+            backgroundImage: "none",
           },
         },
       },
@@ -55,4 +56,3 @@ const getTheme = (mode) => {
 };
 
 export default getTheme;
-
