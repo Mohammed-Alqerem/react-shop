@@ -1,12 +1,14 @@
 import useCart from '../../hooks/useCart';
-import { CircularProgress, Box, Typography, TableContainer, TableHead, TableRow, TableCell, TableBody, Table, Button, TableFooter, Container, Breadcrumbs, Link, Divider, Grid, TextField } from '@mui/material';
+import { CircularProgress, Box, FormControl, InputLabel, Select, MenuItem, Typography, TableContainer, TableHead, TableRow, TableCell, TableBody, Table, Button, TableFooter, Container, Breadcrumbs, Link, Divider, Grid, TextField } from '@mui/material';
 import useRemoveFromCart from '../../hooks/useRemoveFromCart';
+import useCheckout from '../../hooks/useCheckout';
 
 import useUpdateCartItem from '../../hooks/useUpdateCartItem';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LockIcon from '@mui/icons-material/Lock';
 import useClearCart from '../../hooks/useClearCart';
+import { useState } from 'react';
 
 export default function Cart() {
 
@@ -18,6 +20,8 @@ export default function Cart() {
   const { mutate: removeItem, isPending: isPendingRemove } = useRemoveFromCart();
   const { mutate: updateItem, isPending: isPendingUpdate } = useUpdateCartItem();
   const { mutate: clearCart, isPending: isPendingClear } = useClearCart();
+  const { mutate: checkout, isPending: checkoutPending } = useCheckout();
+  const [PaymentMethod, setPaymentMethod] = useState('Cash');
 
 
   if (isLoading) {
@@ -63,11 +67,11 @@ export default function Cart() {
               <Table>
                 <TableHead>
                   <TableRow>
-                    <TableCell>Product Name</TableCell>
-                    <TableCell>Price</TableCell>
-                    <TableCell>Count</TableCell>
-                    <TableCell>Total Price</TableCell>
-                    <TableCell>Actions</TableCell>
+                    <TableCell>{ t('Product Name') }</TableCell>
+                    <TableCell>{ t('Price') }</TableCell>
+                    <TableCell>{ t('Count') }</TableCell>
+                    <TableCell>{ t('Total Price') }</TableCell>
+                    <TableCell>{ t('Actions') }</TableCell>
                   </TableRow>
                 </TableHead>
 
@@ -103,7 +107,7 @@ export default function Cart() {
                               </TableCell>
                               <TableCell>{ item.totalPrice }</TableCell>
                               <TableCell>
-                                <Button color='error' variant='contained' onClick={ () => removeItem(item.productId) } disabled={ isPendingRemove }>{ isPendingRemove ? 'Removing...' : 'Remove' }</Button>
+                                <Button color='error' variant='contained' onClick={ () => removeItem(item.productId) } disabled={ isPendingRemove }>{ isPendingRemove ? t('Removing...') : t('Remove') }</Button>
                               </TableCell>
                             </TableRow>
                           )) }
@@ -120,11 +124,11 @@ export default function Cart() {
                           </TableRow>
                           <TableRow>
                             <TableCell colSpan={ 4 } sx={ { fontWeight: 800, fontSize: '16px' } }>
-                              <Button sx={ { flexGrow: 1 } } variant='contained' color='primary' onClick={ () => navigate('/categories') }>Continue Shopping</Button>
+                              <Button sx={ { flexGrow: 1 } } variant='contained' color='primary' onClick={ () => navigate('/categories') }>{ t('Continue Shopping') }</Button>
 
                             </TableCell>
                             <TableCell sx={ { fontWeight: 800, fontSize: '16px' } }>
-                              <Button sx={ { flexGrow: 1 } } variant='contained' color='error' onClick={ () => clearCart() } disabled={ isPendingClear }>{ isPendingClear ? 'Clearing...' : 'Clear Cart' }</Button>
+                              <Button sx={ { flexGrow: 1 } } variant='contained' color='error' onClick={ () => clearCart() } disabled={ isPendingClear }>{ isPendingClear ? t('Clearing...') : t('Clear Cart') }</Button>
                             </TableCell>
 
                           </TableRow>
@@ -138,7 +142,7 @@ export default function Cart() {
                       <TableBody>
                         <TableRow>
                           <TableCell colSpan={ 5 } rowSpan={ 5 } sx={ { textAlign: 'center', py: 15, fontSize: '40px', color: 'gray', userSelect: 'none' } }>
-                            Cart is Empty
+                            { t('Cart is Empty') }
                           </TableCell>
                         </TableRow>
                       </TableBody>
@@ -160,7 +164,7 @@ export default function Cart() {
                 <Box sx={ { display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', alignItems: 'flex-start', gap: 1, mt: 1 } }>
                   <TextField size='small' placeholder='Enter Code' sx={ { flexGrow: 1 } } />
                   <Button variant='contained' color='primary' sx={ { flexGrow: 1 } }>{ t('Apply') }</Button>
-                  <Typography variant='caption' sx={ { color: 'gray', mt: 1, fontWeight: 600, flexGrow: 1 } }>Try: STRIDE20 for 20% off</Typography>
+                  <Typography variant='caption' sx={ { color: 'gray', mt: 1, fontWeight: 600, flexGrow: 1 } }>{ t('Try: STRIDE20 for 20% off') }</Typography>
                 </Box>
                 <Divider sx={ { my: 1 } } />
                 <Box sx={ { display: 'flex', flexDirection: 'column', justifyContent: 'space-around', gap: 1.5 } }>
@@ -170,10 +174,10 @@ export default function Cart() {
                   </Box>
                   <Box sx={ { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } }>
                     <Typography color='text.secondary'>{ t('Shipping') }</Typography>
-                    <Typography color='text.secondary'>FREE</Typography>
+                    <Typography color='text.secondary'>{ t('FREE') }</Typography>
                   </Box>
                   <Box>
-                    <Typography variant='caption' sx={ { color: 'green', fontWeight: 600, mt: 1 } }>You qualify for free shipping!</Typography>
+                    <Typography variant='caption' sx={ { color: 'green', fontWeight: 600, mt: 1 } }>{ t('You qualify for free shipping!') }</Typography>
                   </Box>
                   <Box sx={ { display: 'flex', justifyContent: 'space-between', alignItems: 'center' } }>
                     <Typography color='text.secondary'>{ t('Discount') }</Typography>
@@ -186,10 +190,32 @@ export default function Cart() {
 
 
                   </Box>
-                  <Button sx={ { flexGrow: 1 } } variant='contained' color='success' disabled={ data.items.length === 0 } onClick={ () => navigate('/checkout') }>Checkout</Button>
+
+                  {
+                          data.items?.length > 0 && (
+                            <Box sx={ { display: 'flex', flexDirection: 'column', gap: 2 } }>
+                              <FormControl>
+                                <InputLabel id="PaymentMethod">{ t('Payment Method') }</InputLabel>
+                                <Select
+                                  labelId="PaymentMethod"
+                                  id="PaymentMethod"
+                                  value={ PaymentMethod }
+                                  label="Payment Method"
+                                  onChange={ (e) => setPaymentMethod(e.target.value) }
+                                >
+                                  <MenuItem value={ 'Visa' }>Visa</MenuItem>
+                                  <MenuItem value={ 'Cash' }>Cash</MenuItem>
+                                </Select>
+                              </FormControl>
+                              <Button variant='contained' onClick={ () => checkout(PaymentMethod) } disabled={ checkoutPending }>{checkoutPending ? <><CircularProgress size={ 20 } />  { t('Processing') } </> : t('Checkout')}</Button>
+                            </Box>
+                          )
+                        }
+
+                  
                   <Box sx={ { py: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 } }>
                     <LockIcon />
-                    <Typography>Secure Checkout</Typography>
+                    <Typography>{t('Secure Checkout')}</Typography>
                   </Box>
                   <Box sx={ { display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap', justifyContent: 'center', filter: 'grayscale(100%)' } }>
                     <Typography component="svg" viewBox="0 0 24 24" fill="none" sx={ { width: 50, height: 50, paddingY: .5, paddingX: 1.5, borderRadius: 2 } }> <circle cx="9" cy="12" r="6" fill="#EB001B"></circle> <circle cx="15" cy="12" r="6" fill="#F79E1B"></circle> <path d="M12 7.5a6 6 0 000 9 6 6 0 000-9z" fill="#FF5F00"></path> </Typography>
