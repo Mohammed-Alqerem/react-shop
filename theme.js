@@ -21,9 +21,7 @@ const getTheme = (mode) => {
       },
       divider: mode === "light" ? "rgba(0,0,0,0.08)" : "rgba(255,255,255,0.08)",
     },
-    shape: {
-      borderRadius: 12,
-    },
+    
     typography: {
       fontFamily:
         '"Outfit", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',

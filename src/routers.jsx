@@ -7,10 +7,10 @@ import Login from "./pages/auth/login/Login";
 import ProductDetails from "./pages/products/ProductDetails";
 import CategoriesPage from "./pages/categories/CategoriesPage";
 import ProtectedRouter from "../ProtectedRouter";
-import Checkout from "./pages/checkout/Checkout";
 import Profile from "./pages/profile/Profile";
 import ProfileInfo from "./pages/profile/ProfileInfo";
 import ProfileOrders from "./pages/profile/ProfileOrders";
+import ChangePassword from "./components/changePassword/changePassword";
 
 const router = createBrowserRouter([
 
@@ -32,13 +32,7 @@ const router = createBrowserRouter([
                 path: 'categories/product/:id',
                 element: <ProductDetails />
             },
-            {
-                path: 'checkout',
-                element:
-                    <ProtectedRouter>
-                        <Checkout />
-                    </ProtectedRouter>
-            },
+
             {
                 path: 'profile',
                 element:
@@ -53,6 +47,10 @@ const router = createBrowserRouter([
                     {
                         path: 'orders',
                         element: <ProfileOrders />
+                    },
+                    {
+                        path: 'changePassword',
+                        element: <ChangePassword />
                     }
                 ]
             },

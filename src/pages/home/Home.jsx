@@ -6,7 +6,7 @@ import GradeIcon from '@mui/icons-material/Grade';
 import AppleIcon from '@mui/icons-material/Apple';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
-import heroImage from './../../assets/shopping-hero.jpg';
+import heroImage from '../../assets/shopping-hero.jpg';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Link as ReactRouterLink } from 'react-router-dom';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';

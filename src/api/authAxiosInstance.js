@@ -4,7 +4,7 @@ import i18n from "../../i18next";
 const authAxiosInstance = axios.create({
     baseURL:'https://knowledgeshop.runasp.net/api',
     headers:{
-       'Authorization':`Bearer ${localStorage.getItem('accessToken')}`
+       'Authorization':`bearer ${localStorage.getItem('accessToken')}`
     }
 
 });
