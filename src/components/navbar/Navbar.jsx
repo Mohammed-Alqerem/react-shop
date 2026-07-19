@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import PersonIcon from '@mui/icons-material/Person';
 import i18n from '../../../i18next';
 import useThemeStore from '../../store/useThemeStore';
-import Logo from '../logo';
+import Logo from './../Logo';
 
 export default function Navbar() {
 

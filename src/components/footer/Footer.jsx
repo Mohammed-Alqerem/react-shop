@@ -5,7 +5,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 import { useTranslation } from 'react-i18next';
-import Logo from './../logo';
+import Logo from './../Logo';
 
 export default function Footer() {
 
