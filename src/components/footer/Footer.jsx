@@ -1,11 +1,11 @@
 import { Box, Button, Container, Divider, Grid, IconButton, InputBase, Link, Typography } from '@mui/material'
 import React from 'react'
-import Logo from '../logo'
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import XIcon from '@mui/icons-material/X';
 import { useTranslation } from 'react-i18next';
+import Logo from './../logo';
 
 export default function Footer() {
 
