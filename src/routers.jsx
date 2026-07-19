@@ -10,8 +10,8 @@ import ProtectedRouter from "../ProtectedRouter";
 import Profile from "./pages/profile/Profile";
 import ProfileInfo from "./pages/profile/ProfileInfo";
 import ProfileOrders from "./pages/profile/ProfileOrders";
-import ChangePassword from "./components/changePassword/changePassword";
 import Unauthorized from "./pages/unauthorized/Unauthorized";
+import ChangePassword from "./components/changePassword/ChangePassword";
 
 const router = createBrowserRouter([
 
