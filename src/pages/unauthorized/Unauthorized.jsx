@@ -99,7 +99,7 @@ export default function Unauthorized() {
             mb: 1,
           }}
         >
-          403
+          401
         </Typography>
 
         {/* Title */}

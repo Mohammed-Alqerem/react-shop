@@ -14,6 +14,7 @@ export default function useAddToCart() {
         mutationFn: async (values) => {
             if (!token) {
                 navigate('/unauthorized');
+                return Promise.reject({ MyErorr: true }); // this is mean ==> no go to the onSuccess and the error not from server 
             }
             return authAxiosInstance.post(`/Carts`, {
                 ProductId: values.ProductId,

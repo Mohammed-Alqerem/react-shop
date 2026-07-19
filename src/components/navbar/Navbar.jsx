@@ -33,8 +33,8 @@ export default function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    navigate('/login');
     logout();
-    navigate('/login')
   }
 
   return (

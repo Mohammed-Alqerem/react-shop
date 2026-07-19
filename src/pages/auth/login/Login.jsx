@@ -18,7 +18,7 @@ export default function Login() {
 
   });
 
-  const { mutate,isPending } = useLogin();
+  const { mutate, isPending } = useLogin();
 
 
   // const handleLogin = async (value) => {
@@ -88,9 +88,9 @@ export default function Login() {
         </Button>
 
         <Box width={ '100%' } display={ 'flex' } flexWrap={ 'wrap' } justifyContent={ 'space-between' }>
-          <Typography color='#595757' sx={ { userSelect: 'none' } }>Do not have an account? <Link component={ RouterLink } color='#000' fontWeight={ 'medium' } to={ 'register' }>Sign up</Link></Typography>
+          <Typography sx={ { userSelect: 'none' } }>Do not have an account? <Link component={ RouterLink } color='secondary.main' fontWeight={ 'medium' } to={ 'register' }>Sign up</Link></Typography>
 
-          <Link color='#595757' sx={ { userSelect: 'none' } } component={ RouterLink }>Forget your password?</Link>
+          <Link sx={ { userSelect: 'none', color: 'secondary.main' } } component={ RouterLink }>Forget your password?</Link>
         </Box>
 
 
