@@ -1,52 +1,53 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Alert, Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Button, CircularProgress, Link, TextField, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import LoginSchema from '../../../validation/LoginSchema';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { Bounce, toast } from 'react-toastify';
-import axiosInstance from '../../../api/axiosInstance';
-import { useAuthStore } from '../../../store/useAuthStore';
+import { Link as RouterLink } from 'react-router-dom';
+import useLogin from '../../../hooks/useLogin';
+// import axiosInstance from '../../../api/axiosInstance';
+// import { useAuthStore } from '../../../store/useAuthStore';
 export default function Login() {
-   
-   const navigate = useNavigate();
-  const setToken = useAuthStore((state) => state.setToken);
-  const [serverError, setServerError] = useState([]);
 
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({
+  //  const navigate = useNavigate();
+  // const setToken = useAuthStore((state) => state.setToken);
+  // const [serverError, setServerError] = useState([]);``
+
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema),
     mode: 'onChange',
 
   });
 
-
-  const handleLogin = async (value) => {
-
-    try {
-      const response = await axiosInstance.post(`/auth/Account/Login`, value);
-      toast.success("Login successful!", {
-        position: "top-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: false,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-        transition: Bounce,
-      });
-      if(response.status === 200){
-        setToken(response.data.accessToken)
-        navigate('/');
-      }
-      console.log(response.data.accessToken);
-    } catch (error) {
-      console.log("mohammed" + error.response.data.message);
-      setServerError(error.response.data.message);
-    }
+  const { mutate,isPending } = useLogin();
 
 
-  }
+  // const handleLogin = async (value) => {
+
+  //   try {
+  //     const response = await axiosInstance.post(`/auth/Account/Login`, value);
+  //     toast.success("Login successful!", {
+  //       position: "top-right",
+  //       autoClose: 3000,
+  //       hideProgressBar: false,
+  //       closeOnClick: false,
+  //       pauseOnHover: false,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "colored",
+  //       transition: Bounce,
+  //     });
+  //     if(response.status === 200){
+  //       setToken(response.data.accessToken)
+  //       navigate('/');
+  //     }
+  //     console.log(response.data.accessToken);
+  //   } catch (error) {
+  //     console.log("mohammed" + error.response.data.message);
+  //     setServerError(error.response.data.message);
+  //   }
+
+
+  // }
 
 
   return (
@@ -59,14 +60,14 @@ export default function Login() {
       <Typography color='#9e9494' sx={ { userSelect: 'none' } } my={ 2 } component={ 'p' } >
         If you have an account with us, please sign in.
       </Typography>
-
+      {/* 
       { serverError?.length > 0 && (
 
         <Alert variant='standard' severity='error'>{ serverError }</Alert>
       )
-      }
+      } */}
 
-      <Box component={ 'form' } onSubmit={ handleSubmit(handleLogin) } py={ 3 } display={ 'flex' } gap={ 3 } flexDirection={ 'column' } alignItems={ 'flex-start' }>
+      <Box component={ 'form' } onSubmit={ handleSubmit(mutate) } py={ 3 } display={ 'flex' } gap={ 3 } flexDirection={ 'column' } alignItems={ 'flex-start' }>
 
         <TextField { ...register('email') } label='Email' fullWidth variant='outlined'
           error={ errors.email }
@@ -77,8 +78,8 @@ export default function Login() {
           helperText={ errors.password?.message }
         />
 
-        <Button variant='contained' type='submit' disabled={ isSubmitting } sx={ { background: '#000', width: '100%' } }>
-          { isSubmitting ? <CircularProgress
+        <Button variant='contained' type='submit' disabled={ isPending } sx={ { background: '#000', width: '100%' } }>
+          { isPending ? <CircularProgress
             size={ '22px' }
             enableTrackSlot={ '30px' }
             color='secondary' />

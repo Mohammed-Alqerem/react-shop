@@ -1,27 +1,23 @@
-import { useMutation, useQueryClient } from '@tanstack/react-query'
-import authAxiosInstance from '../api/authAxiosInstance'
+import { useMutation } from '@tanstack/react-query'
+import axiosInstance from '../api/axiosInstance';
 import { Bounce, toast } from 'react-toastify';
-import { useAuthStore } from '../store/useAuthStore';
 import { useNavigate } from 'react-router-dom';
+import { useAuthStore } from '../store/useAuthStore';
 
-export default function useAddToCart() {
 
-    const queryClient = useQueryClient();
-    const token = useAuthStore((state) => state.token);
+export default function useLogin() {
+
+    const setToken = useAuthStore((state) => state.setToken);
     const navigate = useNavigate();
+    return useMutation({
+        mutationFn: async ({ email, password }) => {
+            return await axiosInstance.post(`/auth/Account/Login`, { email, password });
+        },
+        onSuccess: (response) => {
 
-    const mutate = useMutation({
-        mutationFn: async (values) => {
-            if (!token) {
-                navigate('/unauthorized');
-            }
-            return authAxiosInstance.post(`/Carts`, {
-                ProductId: values.ProductId,
-                Count: values.Count
-            })
-        }, onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ['cart'] });
-            toast.success("Item Added To Cart Successfuly", {
+            setToken(response.data.accessToken);
+            navigate('/');
+            toast.success("Login successful!", {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -32,6 +28,7 @@ export default function useAddToCart() {
                 theme: "colored",
                 transition: Bounce,
             });
+
         }, onError: (error) => {
             toast.error(error.response.data.message, {
                 position: "top-right",
@@ -46,6 +43,4 @@ export default function useAddToCart() {
             });
         }
     })
-
-    return mutate
 }

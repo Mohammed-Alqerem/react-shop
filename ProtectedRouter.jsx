@@ -7,7 +7,7 @@ export default function ProtectedRouter({ children }) {
     const token = useAuthStore((state) => state.token);
     return (
         <>
-            {token ? children : <Navigate to={'/login'} />}
+            {token ? children : <Navigate to={'/unauthorized'} />}
         </>
     )
 }

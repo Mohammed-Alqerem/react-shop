@@ -11,6 +11,7 @@ import Profile from "./pages/profile/Profile";
 import ProfileInfo from "./pages/profile/ProfileInfo";
 import ProfileOrders from "./pages/profile/ProfileOrders";
 import ChangePassword from "./components/changePassword/changePassword";
+import Unauthorized from "./pages/unauthorized/Unauthorized";
 
 const router = createBrowserRouter([
 
@@ -30,7 +31,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'categories/product/:id',
-                element: <ProductDetails />
+                element:
+                    <ProtectedRouter>
+                        <ProductDetails />
+                    </ProtectedRouter>
             },
 
             {
@@ -56,7 +60,10 @@ const router = createBrowserRouter([
             },
             {
                 path: 'categories',
-                element: <CategoriesPage />
+                element:
+                    <ProtectedRouter>
+                        <CategoriesPage />
+                    </ProtectedRouter>
             },
             {
                 path: 'cart',
@@ -72,8 +79,12 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login />
-            }
+            },
         ]
+    },
+    {
+        path: '/unauthorized',
+        element: <Unauthorized />
     }
 
 
