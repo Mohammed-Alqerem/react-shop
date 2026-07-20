@@ -9,7 +9,7 @@
 [![MUI](https://img.shields.io/badge/MUI-7-007FFF?logo=mui&logoColor=white)](https://mui.com/)
 [![License](https://img.shields.io/badge/License-Unlicensed-lightgrey)](#-license)
 
-A fast, elegant, and responsive e-commerce storefront built with **React 19** and **Vite**, featuring Material UI & CoreUI components, multi-language support, protected routing, and global state management.
+A fast, elegant, and responsive e-commerce storefront built with **React 19** and **Vite**, featuring Material UI & CoreUI components, multi-language support, protected routing, and global state management .
 
 </div>
 
