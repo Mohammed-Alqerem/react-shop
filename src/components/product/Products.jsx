@@ -1,7 +1,7 @@
 import React from 'react'
 import useProducts from '../../hooks/useProducts'
 import { Box, Card, CardContent, CardMedia, Chip, Grid, Typography } from '@mui/material';
-import Loader from '../../ui/Loader/Loader';
+import ProductCardSkeleton from '../../ui/Skeleton/ProductCardSkeleton';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -12,7 +12,13 @@ export default function Products({ limit }) {
     const {t} = useTranslation();
 
     if (isLoading) {
-        return <Loader />
+        return (
+            <Box component="section" py={3} className="products">
+                <Grid container spacing={4} sx={{ mt: 1 }}>
+                    <ProductCardSkeleton count={limit || 6} />
+                </Grid>
+            </Box>
+        );
     }
 
 

@@ -8,6 +8,7 @@ import useProductByCategories from '../../hooks/useProductByCategories';
 import useProducts from '../../hooks/useProducts';
 import { useTranslation } from 'react-i18next';
 
+
 export default function CategoriesPage() {
 
     const { t } = useTranslation();
@@ -172,8 +173,9 @@ export default function CategoriesPage() {
                                         allProduct ? (
                                             allProducts?.response?.data.map((product) => (
                                                 <Grid item size={ { xs: 12, sm: 6, md: 4, lg: 3 } }>
-                                                    <ProductToShop products={ product } />
+                                                        <ProductToShop products={ product } />
                                                 </Grid>
+
                                             ))
                                         ) : (
                                             products?.response?.map((product) => (

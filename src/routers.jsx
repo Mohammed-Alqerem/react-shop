@@ -12,6 +12,8 @@ import ProfileInfo from "./pages/profile/ProfileInfo";
 import ProfileOrders from "./pages/profile/ProfileOrders";
 import Unauthorized from "./pages/unauthorized/Unauthorized";
 import ChangePassword from "./components/changePassword/ChangePassword";
+import ForgetPassword from "./pages/forgetPassword/ForgetPassword";
+import VerifyCode from "./pages/otp/VerifyCode";
 
 const router = createBrowserRouter([
 
@@ -85,6 +87,14 @@ const router = createBrowserRouter([
     {
         path: '/unauthorized',
         element: <Unauthorized />
+    },
+    {
+        path: '/ForgetPassword',
+        element: <ForgetPassword />
+    },
+    {
+        path:'/VerifyCode',
+        element: <VerifyCode />
     }
 
 

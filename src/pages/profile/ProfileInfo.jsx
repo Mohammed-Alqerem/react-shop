@@ -1,10 +1,17 @@
-import { Avatar, Box, Divider, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import { Alert, Avatar, Box, Divider, FormControl, FormControlLabel, FormLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
 import React from 'react'
 import useProfile from '../../hooks/useProfile';
+import ProfileInfoSkeleton from '../../ui/Skeleton/ProfileInfoSkeleton';
 
 export default function ProfileInfo() {
 
-  const { data } = useProfile();
+  const { data, isError, isLoading, error } = useProfile();
+  if (isLoading) {
+    return <ProfileInfoSkeleton />;
+  }
+  if (isError) {
+    return <Alert severity="error">{error.message}</Alert>;
+  }
   return (
     <Box>
       <Typography component={ 'h2' } variant='h4'>Personal Information</Typography>

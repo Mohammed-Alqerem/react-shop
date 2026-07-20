@@ -1,6 +1,6 @@
 import { Box, Grid, Typography } from '@mui/material';
 import useCategories from '../../hooks/useCategories'
-import Loader from '../../ui/Loader/Loader';
+import CategoryButtonsSkeleton from '../../ui/Skeleton/CategoryButtonsSkeleton';
 import { Link } from 'react-router-dom';
 import Category from '../../ui/Category/Category';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,14 @@ export default function CategoriesSection() {
     const {t} = useTranslation();
 
     if (isLoading) {
-        return <Loader />
+        return (
+            <Box component="section" py={3} className="categories">
+                <Typography variant="h4" component="h2" py={3}>{t('Categories')}</Typography>
+                <Grid container spacing={3}>
+                    <CategoryButtonsSkeleton count={5} />
+                </Grid>
+            </Box>
+        );
     }
 
     if (isError) {

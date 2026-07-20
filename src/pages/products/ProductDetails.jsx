@@ -1,7 +1,7 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import useProductDetails from '../../hooks/useProductDetails';
-import Loader from '../../ui/Loader/Loader';
+import ProductDetailsSkeleton from '../../ui/Skeleton/ProductDetailsSkeleton';
 import { Alert, Box, Button, CardMedia, Chip, Container, Divider, Grid, Rating, Typography, Breadcrumbs, Link as MuiLink, IconButton } from '@mui/material';
 import useAddToCart from '../../hooks/useAddToCart';
 import LocalMallOutlinedIcon from '@mui/icons-material/LocalMallOutlined';
@@ -25,7 +25,7 @@ export default function ProductDetails() {
     const product = data?.response;
 
     if (isLoading) {
-        return <Loader />
+        return <ProductDetailsSkeleton />
     }
 
     if (isError) {

@@ -1,5 +1,6 @@
 import useCart from '../../hooks/useCart';
 import { CircularProgress, Box, FormControl, InputLabel, Select, MenuItem, Typography, TableContainer, TableHead, TableRow, TableCell, TableBody, Table, Button, TableFooter, Container, Breadcrumbs, Link, Divider, Grid, TextField } from '@mui/material';
+import CartSkeleton from '../../ui/Skeleton/CartSkeleton';
 import useRemoveFromCart from '../../hooks/useRemoveFromCart';
 import useCheckout from '../../hooks/useCheckout';
 
@@ -25,7 +26,7 @@ export default function Cart() {
 
 
   if (isLoading) {
-    return <CircularProgress sx={ { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' } } />
+    return <CartSkeleton />
   }
 
 

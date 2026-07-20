@@ -2,9 +2,11 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import React from 'react'
 import authAxiosInstance from '../api/authAxiosInstance'
 import { Bounce, toast } from 'react-toastify';
+import { useTranslation } from 'react-i18next';
 
 export default function useRemoveFromCart() {
 
+    const { t } = useTranslation();
 
     const queryClient = useQueryClient();
 
@@ -14,7 +16,7 @@ export default function useRemoveFromCart() {
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['cart'] });
-            toast.success("Item Removed Successfully!", {
+            toast.success(t("item Removed Successfully"), {
                 position: "top-right",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -27,7 +29,7 @@ export default function useRemoveFromCart() {
             });
         },
         onError: () => {
-            toast.error("Failed to remove item from cart", {
+            toast.error(t("failed To Remove Item"), {
                 position: "top-right",
                 autoClose: 3000,
                 theme: "colored",

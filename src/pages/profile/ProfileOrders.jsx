@@ -8,7 +8,8 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import useProfile from '../../hooks/useProfile';
 import { useState } from 'react';
-import { Box, Chip, Typography } from '@mui/material';
+import { Alert, Box, Chip, Typography } from '@mui/material';
+import OrdersTableSkeleton from '../../ui/Skeleton/OrdersTableSkeleton';
 
 
 
@@ -16,7 +17,7 @@ import { Box, Chip, Typography } from '@mui/material';
 
 
 export default function ColumnGroupingTable() {
-  const { data } = useProfile();
+  const { data, isError, isLoading, error } = useProfile();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -28,6 +29,12 @@ export default function ColumnGroupingTable() {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  if (isLoading) {
+    return <OrdersTableSkeleton />;
+  }
+  if (isError) {
+    return <Alert severity="error">{error.message}</Alert>;
+  }
 
   return (
 
